@@ -63,6 +63,6 @@ Versão inicial para portfólio. O script foi adaptado para publicação, mas de
 ## 👤 Autor
 
 **Daniel Neves**  
-Engenheiro Ambiental | Geoprocessamento e Automação GIS
+Engenheiro Ambiental | Analista GIS | Geoprocessamento
 
 - GitHub: [@nevesdan](https://github.com/nevesdan)
