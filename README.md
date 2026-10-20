@@ -50,7 +50,7 @@ As imagens abaixo documentam o projeto e o fluxo de trabalho no ArcGIS Pro.
 ## ▶️ Como usar
 
 1. Abra o projeto no ArcGIS Pro.
-2. O script foi configurado com os caminhos e nomes usados no projeto original: `INPUT_FC` aponta para `RedeGasCigas2.shp`, `OUTPUT_GDB` para `Setembro2026.gdb` e `OUTPUT_NAME` está definido como `CT059_Pontos`. Se for usar em outro computador ou projeto, ajuste esses caminhos para os locais existentes no seu ambiente.
+2. O script foi configurado com os caminhos e nomes usados no projeto original: `INPUT_FC` aponta para `RedeGasExemplo.shp`, `OUTPUT_GDB` para `Setembro2026.gdb` e `OUTPUT_NAME` está definido como `CT059_Pontos`. Se for usar em outro computador ou projeto, ajuste esses caminhos para os locais existentes no seu ambiente.
 3. Confira os campos em `INHERITED_FIELDS` e ajuste-os conforme a sua camada.
 4. No mapa ativo, selecione as feições que deseja processar na camada configurada.
 5. Execute o script na janela Python do ArcGIS Pro.
