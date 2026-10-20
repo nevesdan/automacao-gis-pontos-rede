@@ -36,8 +36,6 @@ As imagens abaixo documentam o projeto e o fluxo de trabalho no ArcGIS Pro.
 | **3. Captura do processamento** | ![Captura do processamento](Captura%20de%20tela%202026-10-19%20171041.png) |
 | **4. Captura dos resultados** | ![Captura dos resultados](Captura%20de%20tela%202026-10-19%20171102.png) |
 | **5. Captura dos atributos** | ![Captura dos atributos](Captura%20de%20tela%202026-10-19%20171125.png) |
-| **6. Captura complementar** | ![Captura complementar](Captura%20de%20tela%202026-10-20%20071138.png) |
-| **7. Captura complementar** | ![Captura complementar](Captura%20de%20tela%202026-10-20%20073410.png) |
 
 ## 🗂️ Campos de saída
 
