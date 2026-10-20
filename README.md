@@ -4,7 +4,7 @@ Projeto de automação geoespacial com **Python, ArcPy e ArcGIS Pro** para extra
 
 ## 🎯 Objetivo
 
-Reduzir etapas manuais na criação de pontos de início e fim de trechos lineares, mantendo atributos relevantes da camada de origem e disponibilizando coordenadas em formatos úteis para conferência.
+Reduzir etapas manuais na criação de pontos de início e fim de trechos lineares, mantendo atributos relevantes da camada de origem e disponibilizando coordenadas em formatos úteis para conferência. O script foi testado e utilizado em uma rotina real para apoiar a produção do **Mapa de Avanço referente ao mês de setembro de 2026**, automatizando a extração dos pontos extremos dos trechos selecionados.
 
 ## 🧩 O problema
 
@@ -50,7 +50,7 @@ As imagens abaixo documentam o projeto e o fluxo de trabalho no ArcGIS Pro.
 ## ▶️ Como usar
 
 1. Abra o projeto no ArcGIS Pro.
-2. Abra o script e ajuste `INPUT_FC`, `OUTPUT_GDB` e `OUTPUT_NAME` para os caminhos e nomes do seu ambiente.
+2. O script foi configurado com os caminhos e nomes usados no projeto original: `INPUT_FC` aponta para `RedeGasCigas2.shp`, `OUTPUT_GDB` para `Setembro2026.gdb` e `OUTPUT_NAME` está definido como `CT059_Pontos`. Se for usar em outro computador ou projeto, ajuste esses caminhos para os locais existentes no seu ambiente.
 3. Confira os campos em `INHERITED_FIELDS` e ajuste-os conforme a sua camada.
 4. No mapa ativo, selecione as feições que deseja processar na camada configurada.
 5. Execute o script na janela Python do ArcGIS Pro.
@@ -68,11 +68,11 @@ As imagens abaixo documentam o projeto e o fluxo de trabalho no ArcGIS Pro.
 
 ## 🔒 Privacidade e dados
 
-Este repositório não inclui dados operacionais nem geometrias reais de redes. Os caminhos publicados são exemplos genéricos; substitua `INPUT_FC` e `OUTPUT_GDB` pelos caminhos existentes no seu ambiente. Um caminho local, isoladamente, não concede acesso ao computador, mas caminhos específicos da máquina podem expor detalhes desnecessários da estrutura de diretórios.
+Este repositório publica os caminhos de configuração utilizados no projeto original, inclusive o nome da geodatabase `Setembro2026.gdb`. Os caminhos são referências locais e não concedem acesso ao computador ou aos arquivos por si só. O repositório não inclui a geodatabase nem os dados operacionais; para executar em outro ambiente, ajuste `INPUT_FC` e `OUTPUT_GDB`.
 
 ## 📌 Status
 
-Versão para portfólio baseada na lógica original do script. O código foi preparado para configuração em outros ambientes; como depende do ArcPy e de dados locais, valide a configuração dos caminhos e os resultados no ArcGIS Pro antes de uso operacional. A biblioteca ArcPy depende da instalação/licença e do ambiente Python do ArcGIS Pro.
+Script baseado no código original, testado e utilizado para resolver uma necessidade prática: agilizar a criação dos pontos extremos necessários à elaboração do Mapa de Avanço de setembro de 2026. O processamento depende do ArcPy, do ArcGIS Pro e dos dados locais do projeto. Para reutilizá-lo em outro ambiente, ajuste os caminhos e valide os resultados. A biblioteca ArcPy depende da instalação/licença e do ambiente Python do ArcGIS Pro.
 
 ## 👤 Autor
 
