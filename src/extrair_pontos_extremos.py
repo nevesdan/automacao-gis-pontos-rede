@@ -19,7 +19,7 @@ import arcpy
 # CONFIGURACAO: ajuste estes valores para o seu projeto.
 # ---------------------------------------------------------------------------
 INPUT_FC = r"E:\03_Geodatabase\ShapesOficiais\RedeGasExemplo.shp"
-OUTPUT_GDB = r"E:\01_Solicitações\04_Mapa GECOR\2026-09-setembro\Setembro2026.gdb"
+OUTPUT_GDB = r"E:\01_Solicitações\04_MapaSetor\2026-09-setembro\Setembro2026.gdb"
 OUTPUT_NAME = "CT059_Pontos"
 
 # Campos da camada de entrada que serao copiados para os pontos de saida.
