@@ -14,7 +14,7 @@ Em rotinas de produção cartográfica e análise GIS, pode ser necessário cria
 
 O script em [`src/extrair_pontos_extremos.py`](src/extrair_pontos_extremos.py) automatiza o processo no ArcGIS Pro:
 
-1. Localiza a camada configurada no mapa ativo e verifica se existem feições selecionadas.
+1. Localiza no mapa ativo a camada cuja fonte corresponde ao caminho configurado em `INPUT_FC` e verifica se existem feições selecionadas.
 2. Lê os extremos de cada feição linear selecionada.
 3. Define **INICIO** no extremo de maior coordenada Y e **FIM** no extremo de menor coordenada Y.
 4. Ordena as feições de Norte para Sul, usando X e o identificador da feição como critérios de desempate.
@@ -50,12 +50,12 @@ As imagens abaixo documentam o projeto e o fluxo de trabalho no ArcGIS Pro.
 ## ▶️ Como usar
 
 1. Abra o projeto no ArcGIS Pro.
-2. Abra o script e ajuste `INPUT_LAYER_NAME`, `OUTPUT_GDB` e `OUTPUT_NAME`.
+2. Abra o script e ajuste `INPUT_FC`, `OUTPUT_GDB` e `OUTPUT_NAME` para os caminhos e nomes do seu ambiente.
 3. Confira os campos em `INHERITED_FIELDS` e ajuste-os conforme a sua camada.
 4. No mapa ativo, selecione as feições que deseja processar na camada configurada.
 5. Execute o script na janela Python do ArcGIS Pro.
 
-Por segurança, `OVERWRITE_OUTPUT` está definido como `False`. Se a saída já existir, o script interrompe a execução sem apagá-la. Para substituir deliberadamente a saída, altere a opção para `True` após confirmar o nome e o destino.
+**Atenção: sobrescrita da saída.** Se a feature class definida em `OUTPUT_NAME` já existir dentro de `OUTPUT_GDB`, o script a apaga e cria uma nova. Confira o caminho e o nome de saída antes de executar, especialmente se houver dados que deseja preservar.
 
 **Atenção à orientação:** a regra Norte–Sul usa a coordenada Y do sistema de referência da camada. Antes de executar, confirme que essa regra corresponde ao sistema de coordenadas e ao resultado esperado para seus dados.
 
@@ -68,11 +68,11 @@ Por segurança, `OVERWRITE_OUTPUT` está definido como `False`. Se a saída já 
 
 ## 🔒 Privacidade e dados
 
-Este repositório contém código demonstrativo, sem dados operacionais, geometrias reais de redes, credenciais ou caminhos de diretórios corporativos. Os caminhos e o nome da camada devem ser configurados pelo usuário no próprio ambiente.
+Este repositório não inclui dados operacionais nem geometrias reais de redes. Os caminhos publicados são exemplos genéricos; substitua `INPUT_FC` e `OUTPUT_GDB` pelos caminhos existentes no seu ambiente. Um caminho local, isoladamente, não concede acesso ao computador, mas caminhos específicos da máquina podem expor detalhes desnecessários da estrutura de diretórios.
 
 ## 📌 Status
 
-Versão inicial para portfólio. O script foi adaptado para publicação, mas deve ser testado no ambiente ArcGIS Pro do usuário antes de uso operacional. A biblioteca ArcPy depende da instalação/licença e do ambiente Python do ArcGIS Pro.
+Versão para portfólio baseada na lógica original do script. O código foi preparado para configuração em outros ambientes; como depende do ArcPy e de dados locais, valide a configuração dos caminhos e os resultados no ArcGIS Pro antes de uso operacional. A biblioteca ArcPy depende da instalação/licença e do ambiente Python do ArcGIS Pro.
 
 ## 👤 Autor
 
