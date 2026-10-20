@@ -52,8 +52,8 @@ def format_dms(value, degree_width):
     minutes, seconds_hundredths = divmod(remainder, 6000)
     seconds = seconds_hundredths / 100.0
     sign = "-" if negative else ""
-    return u'{}{:0{}d}° {:02d}\' {:05.2f}"'.format(
-        sign, degrees, minutes, seconds
+    return u"{}{:0{}d}° {:02d}' {:05.2f}\"".format(
+        sign, degrees, degree_width, minutes, seconds
     )
 
 
