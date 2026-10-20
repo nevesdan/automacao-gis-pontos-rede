@@ -18,9 +18,9 @@ import arcpy
 # ---------------------------------------------------------------------------
 # CONFIGURACAO: ajuste estes valores para o seu projeto.
 # ---------------------------------------------------------------------------
-INPUT_LAYER_NAME = "SuaCamadaDeLinhas"
+INPUT_FC = r"C:\CAMINHO\PARA\SUA_CAMADA.shp"
 OUTPUT_GDB = r"C:\CAMINHO\PARA\SUA_GEODATABASE.gdb"
-OUTPUT_NAME = "Pontos_Extremos"
+OUTPUT_NAME = "CT059_Pontos"
 
 # Campos da camada de entrada que serao copiados para os pontos de saida.
 INHERITED_FIELDS = (
@@ -34,10 +34,6 @@ INHERITED_FIELDS = (
 
 LAT_DMS_FIELD = "LAT_DMS"
 LONG_DMS_FIELD = "LONG_DMS"
-
-# Por seguranca, a execucao para se a saida ja existir. Altere para True
-# somente se quiser substituir a feature class existente.
-OVERWRITE_OUTPUT = False
 
 
 def log(message):
@@ -61,32 +57,39 @@ def format_dms(value, degree_width):
     )
 
 
+def normalized_path(path):
+    """Normaliza caminhos para comparar a fonte da camada com INPUT_FC."""
+    return os.path.normcase(os.path.normpath(path))
+
+
 def find_input_layer(aprx):
-    """Localiza a camada configurada no mapa ativo."""
+    """Localiza no mapa ativo a camada que aponta para INPUT_FC."""
     active_map = aprx.activeMap
     if active_map is None:
         raise RuntimeError("Nao ha mapa ativo no projeto do ArcGIS Pro.")
 
-    matches = [
-        layer for layer in active_map.listLayers()
-        if not layer.isGroupLayer and layer.name == INPUT_LAYER_NAME
-    ]
+    expected_path = normalized_path(INPUT_FC)
+    matches = []
+    for layer in active_map.listLayers():
+        if layer.isGroupLayer or not layer.isFeatureLayer:
+            continue
+        try:
+            if normalized_path(layer.dataSource) == expected_path:
+                matches.append(layer)
+        except Exception:
+            continue
+
     if len(matches) != 1:
         raise RuntimeError(
-            "Esperada exatamente uma camada chamada '{}'; encontradas: {}.".format(
-                INPUT_LAYER_NAME, len(matches)
+            "Esperada exatamente uma camada cuja fonte seja INPUT_FC; "
+            "encontradas: {}. Confira o caminho configurado e a camada no mapa ativo.".format(
+                len(matches)
             )
         )
 
     layer = matches[0]
-    if not layer.isFeatureLayer:
-        raise RuntimeError("A camada configurada nao e uma camada de feicoes.")
     if not layer.getSelectionSet():
-        raise RuntimeError(
-            "A camada '{}' nao possui feicoes selecionadas.".format(
-                INPUT_LAYER_NAME
-            )
-        )
+        raise RuntimeError("A camada de entrada nao possui feicoes selecionadas.")
     return layer
 
 
@@ -148,6 +151,8 @@ def resolve_source_fields(input_layer):
 
 
 def main():
+    if not arcpy.Exists(INPUT_FC):
+        raise RuntimeError("Camada de entrada nao encontrada. Ajuste INPUT_FC no script.")
     if not arcpy.Exists(OUTPUT_GDB):
         raise RuntimeError(
             "Geodatabase de saida nao encontrada. Ajuste OUTPUT_GDB no script."
@@ -172,11 +177,6 @@ def main():
 
     output_fc = os.path.join(OUTPUT_GDB, OUTPUT_NAME)
     if arcpy.Exists(output_fc):
-        if not OVERWRITE_OUTPUT:
-            raise RuntimeError(
-                "A saida ja existe: {}. Renomeie OUTPUT_NAME ou defina "
-                "OVERWRITE_OUTPUT = True para substitui-la.".format(output_fc)
-            )
         arcpy.management.Delete(output_fc)
 
     arcpy.management.CreateFeatureclass(
