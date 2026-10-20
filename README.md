@@ -12,7 +12,7 @@ Em rotinas de produção cartográfica e análise GIS, pode ser necessário cria
 
 ## ⚙️ Como funciona
 
-O script em `src/extrair_pontos_extremos.py` automatiza o processo no ArcGIS Pro:
+O script em [`src/extrair_pontos_extremos.py`](src/extrair_pontos_extremos.py) automatiza o processo no ArcGIS Pro:
 
 1. Localiza a camada configurada no mapa ativo e verifica se existem feições selecionadas.
 2. Lê os extremos de cada feição linear selecionada.
@@ -22,6 +22,22 @@ O script em `src/extrair_pontos_extremos.py` automatiza o processo no ArcGIS Pro
 6. Gera as coordenadas geográficas em graus, minutos e segundos (DMS).
 
 > **Escopo importante:** o script processa cada feição selecionada individualmente. Ele não agrupa segmentos conectados nem calcula a extensão total de uma rede.
+
+## 🖼️ Demonstração visual
+
+As imagens abaixo documentam o projeto e o fluxo de trabalho no ArcGIS Pro.
+
+### Capturas do projeto
+
+| Imagem | Visualização |
+|---|---|
+| **1. Captura inicial** | ![Captura inicial do projeto](Captura%20de%20tela%202026-10-19%20170904.png) |
+| **2. Captura do fluxo de trabalho** | ![Captura do fluxo de trabalho](Captura%20de%20tela%202026-10-19%20171014.png) |
+| **3. Captura do processamento** | ![Captura do processamento](Captura%20de%20tela%202026-10-19%20171041.png) |
+| **4. Captura dos resultados** | ![Captura dos resultados](Captura%20de%20tela%202026-10-19%20171102.png) |
+| **5. Captura dos atributos** | ![Captura dos atributos](Captura%20de%20tela%202026-10-19%20171125.png) |
+| **6. Captura complementar** | ![Captura complementar](Captura%20de%20tela%202026-10-20%20071138.png) |
+| **7. Captura complementar** | ![Captura complementar](Captura%20de%20tela%202026-10-20%20073410.png) |
 
 ## 🗂️ Campos de saída
 
